@@ -29,39 +29,26 @@ Navigate to the project folder.
 
 Run the following command to create a virtual environment:
 
-bash
-Copy
-Edit
+
 python -m venv .venv
 Activate the virtual environment:
 
 Windows (PowerShell):
-bash
-Copy
-Edit
+
 .\.venv\Scripts\Activate.ps1
 Windows (Command Prompt):
-bash
-Copy
-Edit
+
 .\.venv\Scripts\activate.bat
-macOS/Linux:
-bash
-Copy
-Edit
+
 source .venv/bin/activate
 Install Dependencies
 Once your virtual environment is active, install the required libraries:
 
-bash
-Copy
-Edit
+
 pip install -r requirements.txt
 Alternatively, install the necessary libraries manually:
 
-bash
-Copy
-Edit
+
 pip install google-generativeai python-dotenv
 Getting Your Google API Key
 To use the Google Gemini API, you'll need to create a project on Google Cloud and obtain an API key.
@@ -76,9 +63,7 @@ In the root folder of your project (where your chat.py is), create a file named 
 
 Add your API key to the .env file like so:
 
-ini
-Copy
-Edit
+
 GEMINI_API_KEY=your_actual_api_key_here
 Make sure to replace your_actual_api_key_here with the API key you got from Google.
 
@@ -87,9 +72,7 @@ Make sure your virtual environment is activated.
 
 Run the Python chatbot script:
 
-bash
-Copy
-Edit
+
 python chat.py
 Start chatting with the bot! It will ask you for movie/music recommendations, and you can also specify genres, moods, or types of suggestions.
 
@@ -104,6 +87,5 @@ If your virtual environment isn't activating correctly, ensure you're using the 
 Example Interaction
 🎬 User: "Give me a good sci-fi movie."
 🤖 Bot: "You can’t go wrong with Blade Runner 2049—stunning visuals, deep storytelling, and a Hans Zimmer score that hits like a spaceship launch. Or if you want something mind-bending, Interstellar will make you question time itself. Want something lesser-known?"
-License
-MIT License
+
 
