@@ -1,0 +1,289 @@
+/* Luxurious purple gradient background */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    overflow: hidden;
+    background: #3d0066;
+    font-family: 'Arial', sans-serif;
+}
+.dynamic-gradient {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(-45deg, 
+        #3d0066, 
+        #5a189a, 
+        #9d4edd, 
+        #e0aaff
+    );
+    background-size: 400% 400%;
+    animation: gradientSpin 20s ease infinite;
+    z-index: -2;
+}
+@keyframes gradientSpin {
+    0%, 100% {
+        background-position: 0% 50%;
+        background-image: linear-gradient(-45deg, 
+            #3d0066, 
+            #5a189a, 
+            #9d4edd, 
+            #e0aaff
+        );
+    }
+    25% {
+        background-image: linear-gradient(135deg, 
+            #3d0066, 
+            #5a189a, 
+            #9d4edd, 
+            #e0aaff
+        );
+    }
+    50% {
+        background-position: 100% 50%;
+        background-image: linear-gradient(225deg, 
+            #3d0066, 
+            #5a189a, 
+            #9d4edd, 
+            #e0aaff
+        );
+    }
+    75% {
+        background-image: linear-gradient(315deg, 
+            #3d0066, 
+            #5a189a, 
+            #9d4edd, 
+            #e0aaff
+        );
+    }
+}
+
+/* Cursor particles (no change) */
+.cursor-particles {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, 
+        #e0aaff 0%, 
+        #9d4edd 30%, 
+        #5a189a 70%, 
+        #3d0066 100%
+    );
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    filter: blur(2px);
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease-out;
+}
+
+/* Chatbox container */
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: width 0.6s ease, height 0.6s ease, max-width 0.6s ease;
+}
+
+/* Expanded Chatbox */
+.container.expanded {
+    width: 95%;
+    max-width: 95%;
+    height: 85vh;
+    border-radius: 20px;
+}
+
+/* Title */
+/* Modify existing h1 styles */
+h1 {
+    color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    transition: all 0.6s ease;
+    position: relative;
+    z-index: 2;
+    opacity: 1; /* Start fully visible */
+}
+
+.container.expanded h1 {
+    opacity: 0; /* Fade out */
+    transform: translateY(-20px);
+    pointer-events: none;
+}
+
+/* Add to your container class */
+.container {
+    position: center;
+    overflow: hidden;
+}
+
+
+
+/* Chatbox */
+.chatbox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Chat Messages */
+.messages {
+    height: 250px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    color: #fff; /* Fallback color */
+    text-align: left;
+    transition: height 0.5s ease-in-out;
+    line-height: 1.6; /* Better line spacing */
+}
+
+/* Expand Messages */
+.messages.expanded {
+    height: 70vh;
+}
+
+.input-container {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Input & Button */
+input {
+    flex: 1; /* Take up remaining space */
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #7b2cbf;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+}
+
+button:hover {
+    background: #5a189a;
+}
+
+/* Message Styles */
+.user-message {
+    color: #ffffff;
+    text-align: right;
+    margin: 12px 0;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+.bot-message {
+    color: #ffffff !important; /* Force white text */
+    text-align: left;
+    margin: 12px 0;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.4s ease-in-out forwards;
+    white-space: pre-wrap; /* Preserve line breaks */
+    word-wrap: break-word;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+/* Smooth Message Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background: #5a189a;
+    border-radius: 4px;
+}
+/* Add these styles to your CSS */
+.chatbox-title {
+    position: absolute;
+    top: 20%; /* Start position */
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    color: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+    white-space: nowrap;
+    z-index: -1;
+    transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+    user-select: none;
+    opacity: 0; /* Start hidden */
+}
+
+.container.expanded .chatbox-title {
+    opacity: 1; /* Fade in */
+    top: 50%; /* Move to center */
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5); /* Enlarge by 50% */
+    color: rgba(255, 255, 255, 0.1); /* Slightly more transparent */
+}
+
+.container:not(.expanded) .chatbox-title {
+    opacity: 0;
+    transform: translate(-50%, 0%) scale(0.8);
+}
+
+
